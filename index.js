@@ -1,42 +1,36 @@
+// Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-inquirer.prompt(
-    [
-        {
-            type: 'input',
-            name: 'text',
-            message: 'What text would you like inside your logo?',
-            validate: function(answer) {
-                if(answer.length > 3 ) {
-                    return false;
-                }
-                return true;
+const questions = require('./lib/questions');
+const { Triangle, Square, Circle } = require('./lib/shapes');
 
-            }
-        },
 
-        {
-            type: 'input',
-            name: 'textColor',
-            message: 'What color would you like your text to be (must be a valid color or hexidecimal)?',
-        },
+// A function to write README file
+// function writeToFile(fileName, data) {
+//     fs.writeFileSync(fileName, data);
+// }
 
-        {
-            type: 'list',
-            name: 'shape',
-            message: 'What shape would you like for your logo?',
-            choices: ['circle', 'triange', 'square']
-        },
+// A function to initialize app
+function init() {
+    inquirer.prompt(questions).then((userAnswers) => {
+        const {shapeChoice, shapeColor, text, textColor} = userAnswers;
+        let svgShape;
+        switch (shapeChoice) {
+            case 'circle':
+             svgShape = new Circle(shapeColor, textColor, text);
+                break;
+            case 'triangle':
+             svgShape = new Triangle(shapeColor, text, textColor);
+                break;
+            case 'square':
+             svgShape = new Square(shapeColor, text, textColor);
+                break;
+        }
+   
+        fs.writeFileSync('logo.svg', svgShape.render());
+    })
+}
 
-        {
-            type: 'input',
-            name: 'shapeColor',
-            message: 'What color would you like the logo to be?'
-        },
-    ]
-)
-.then((answers) => {
-    console.log(answers);
-
-});
+// Function call to initialize app
+init();
