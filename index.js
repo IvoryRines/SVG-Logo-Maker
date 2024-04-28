@@ -4,27 +4,27 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const questions = require('./lib/questions');
-const { Triangle, Square, Circle } = require('./lib/shapes');
+const { Triangle, Circle, Square } = require('./lib/shapes');
 
 
 // A function to initialize app
 function init() {
     inquirer.prompt(questions).then((userAnswers) => {
-        const {shapeChoice, shapeColor, text, textColor} = userAnswers;
+        const {shapeChoice, shapeColor, textColor, text} = userAnswers;
         let svgShape;
         switch (shapeChoice) {
+            case 'triangle':
+             svgShape = new Triangle(shapeColor, textColor, text);
+                break;
             case 'circle':
              svgShape = new Circle(shapeColor, textColor, text);
                 break;
-            case 'triangle':
-             svgShape = new Triangle(shapeColor, text, textColor);
-                break;
             case 'square':
-             svgShape = new Square(shapeColor, text, textColor);
+             svgShape = new Square(shapeColor, textColor, text);
                 break;
         }
    
-        fs.writeFileSync('logo.svg', svgShape.render());
+        fs.writeFileSync('examples/logo.svg', svgShape.render());
     })
 }
 
