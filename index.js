@@ -24,7 +24,7 @@ function init() {
                 break;
         }
    
-        fs.writeFileSync('examples/logo.svg', svgShape.render());
+        fs.writeFileSync('logo.svg', svgShape.render());
     })
 }
 
