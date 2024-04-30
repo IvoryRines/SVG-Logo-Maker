@@ -39,9 +39,9 @@
 
   Sample logo created with application:
   
-  ![Example Logo](examples/circle%20logo%20example.jpg)
+  ![Example Logo](/examples/sample%20logo%20for%20README.jpg)
 
-  Please see my [tutorial video](https://drive.google.com/file/d/1a2DE2J5oyhY5WMKJnSRJ8LZFPBVehS4o/view?usp=sharing) for a visual demonstration of the application's functionality.
+  Please see my [tutorial video](https://drive.google.com/file/d/1xEmMwcv_xw13Q6bS432YSggUa5KvPceH/view?usp=sharing) for a visual demonstration of the application's functionality.
 
 
 
