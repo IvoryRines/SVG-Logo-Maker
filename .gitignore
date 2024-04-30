@@ -97,7 +97,8 @@ out
 # public
 
 # vuepress build output
-.vuepress/dist
+# not sure if I am supposed to delete this one as well, so i'm commenting it out.
+# .vuepress/dist
 
 # vuepress v2.x temp and cache directory
 .temp
